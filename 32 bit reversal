@@ -1,0 +1,28 @@
+#include <stdio.h>
+unsigned int reverseBits(unsigned int num) {
+    unsigned int i, rev = 0;
+    int bits = sizeof(num) * 8;
+    for ( i = 0; i < bits; i++) {
+        rev <<= 1;
+        if (num & 1)
+            rev |= 1;
+        num >>= 1;
+    }
+    return rev;
+}
+int main() {
+    int i,n;
+    printf("Enter the number of integers in the list: ");
+    scanf("%d", &n);
+    unsigned int input;
+    printf("Enter the integers one per line:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%u", &input);
+        unsigned int reversed = reverseBits(input);
+        printf("%u", reversed);
+        if (i < n - 1)
+            printf(", ");
+    }
+    printf("\n");
+    return 0;
+}
